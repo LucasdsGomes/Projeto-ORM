@@ -63,5 +63,3 @@ class ORM {
 }
 
 module.exports = ORM
-
-// CRIAR METODOS PRIVADOS E COLOCAR UM ID NO ATUALIZAR
