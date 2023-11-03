@@ -17,36 +17,34 @@ class ORM {
         
     }
 
-    static atualizar(updatePokemon, replacePokemon) {
-        const pokemonToUpdate = this.arrayPokemon.find(pokemon => pokemon.nome === updatePokemon);
+    static atualizar(indexPokemon, replacePokemon) {
+        const pokemonToUpdate = this.arrayPokemon[indexPokemon]
         try {
             if (pokemonToUpdate) {
                 pokemonToUpdate.nome = replacePokemon;
                 console.log(chalk.green("O pokémon desejado foi atualizado com sucesso!"));
             } else {
-                console.log(chalk.red("O pokémon desejado não está listado para atualização."));
+                console.log(chalk.red("O pokémon desejado não está listado"));
             }
         } catch (e) {
-            throw new Error(chalk.red("Há erros nos nomes dos pokémons a serem atualizados."))
+            throw new Error(chalk.red("Há erros nos parâmetros passados."));
         }
 
     }
 
-    static remover(removePokemon) {
-        const pokemonRemovido = this.arrayPokemon.find(pokemon => pokemon.nome === removePokemon);
+    static remover(indexPokemon) {
+        const pokemonToRemove = this.arrayPokemon[indexPokemon];
     
         try {
-            if (pokemonRemovido) {
-                this.arrayPokemon = this.arrayPokemon.filter(pokemon => pokemon.nome !== removePokemon);
-                console.log(chalk.green("Pokémon removido com sucesso!"))
+            if (pokemonToRemove) {
+                this.arrayPokemon.splice(indexPokemon, 1); 
+                console.log(chalk.green("Pokémon removido com sucesso!"));
             } else {
-                console.error(chalk.red("O pokémon desejado não foi encontrado!"))
+                console.error(chalk.red("O pokémon desejado não foi encontrado!"));
             }
-        }catch (e) {
-            throw new Error(chalk.red("O pokémon a ser removido não foi inserido."))
+        } catch (e) {
+            throw new Error(chalk.red("Ocorreu um erro ao remover o pokémon."));
         }
-
-
     }
     
 
@@ -56,7 +54,7 @@ class ORM {
                 console.log(`Pokémon: ${element.nome}, Posição: ${posicao}`);
             });
         } catch (e) {
-            throw new Error(chalk.red("Erro ao listar pokémons inválidos."))
+            throw new Error(chalk.red("Erro ao listar, pokémons inválidos."))
         }
 
     }
