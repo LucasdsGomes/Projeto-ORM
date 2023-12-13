@@ -7,7 +7,7 @@ class ORM {
         }
     }
 
-    static criar(newPokemon) {
+    static criarNovoPokemon(newPokemon) {
         try {
             this.arrayPokemon.push(newPokemon);
             console.log(chalk.green("O pokémon foi criado com sucesso!"))
@@ -17,7 +17,7 @@ class ORM {
         
     }
 
-    static atualizar(indexPokemon, replacePokemon) {
+    static atualizarPokemonExistente(indexPokemon, replacePokemon) {
         const pokemonToUpdate = this.arrayPokemon[indexPokemon]
         try {
             if (pokemonToUpdate) {
@@ -32,7 +32,7 @@ class ORM {
 
     }
 
-    static remover(indexPokemon) {
+    static removerPokemonExistente(indexPokemon) {
         const pokemonToRemove = this.arrayPokemon[indexPokemon];
     
         try {
@@ -47,8 +47,18 @@ class ORM {
         }
     }
     
+    static buscarPokemon(indexPokemon){
+        try {
+            const pokemonBuscado = this.arrayPokemon[indexPokemon];
+            console.log(`Pokémon buscado: ${pokemonBuscado.nome}`)
+        } catch (e) {
+            console.log(chalk.red("O pokémon buscado não está listado"))
+        }
+        
 
-    static listar(){
+    }
+
+    static listarPokemons(){
         try {
             this.arrayPokemon.forEach((element, posicao) => {
                 console.log(`Pokémon: ${element.nome}, Posição: ${posicao}`);

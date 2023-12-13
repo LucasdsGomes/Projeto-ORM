@@ -4,12 +4,13 @@ class Pokemon extends orm {
     static arrayPokemon = [];
 }
 
-Pokemon.criar({"nome": "Pikachu"});
-Pokemon.criar({"nome": "Raichu"});
-Pokemon.criar({"nome": "Articuno"});
-Pokemon.atualizar(1, "Magnemite");
-Pokemon.remover(0);
-Pokemon.listar();
+Pokemon.criarNovoPokemon({"nome": "Pikachu"});
+Pokemon.criarNovoPokemon({"nome": "Raichu"});
+Pokemon.criarNovoPokemon({"nome": "Articuno"});
+Pokemon.buscarPokemon(2)
+Pokemon.atualizarPokemonExistente(1, "Magnemite");
+Pokemon.removerPokemonExistente(0);
+Pokemon.listarPokemons();
 
 module.exports = Pokemon
 
